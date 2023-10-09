@@ -21,7 +21,7 @@ def count_increasing_depths(depths: List[int]) -> int:
 
 def count_increasing_sums(depths: List[int]) -> int:
     """
-    Part 1
+    Part 2
     Count the number of increasing sums of depths.
     """
     increases = 0
@@ -34,6 +34,3 @@ def count_increasing_sums(depths: List[int]) -> int:
         else:
             current = depth_sum
     return increases
-
-
-
