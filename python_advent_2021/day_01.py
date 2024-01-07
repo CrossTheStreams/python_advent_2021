@@ -34,3 +34,10 @@ def count_increasing_sums(depths: List[int]) -> int:
         else:
             current = depth_sum
     return increases
+
+
+if __name__ == "__main__":
+    with open("inputs/day1.txt", encoding="utf-8") as f:
+        depths = [int(line.strip()) for line in f]
+        print(f"Day 1, Part 1 solution: {count_increasing_depths(depths)}")
+        print(f"Day 1, Part 2 solution: {count_increasing_sums(depths)}")
