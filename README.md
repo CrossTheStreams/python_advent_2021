@@ -1,5 +1,9 @@
 🐍 This is me using Advent of Code 2021 as a Python refresher. 🐍
 
-Install packages with `poetry install`, then run the individual scripts in python_advent_2021 from the root directory, e.g. `python python_advent_2021/day_**.py`.
+Install packages with `poetry install`.
+
+To run code for each puzzle:
+
+`$ python python_advent_2021/advent.py --day <day 1..25> --part <part 1 or 2>`
 
 Run the unit tests in `./test` with `pytest`.

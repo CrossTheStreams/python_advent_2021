@@ -67,11 +67,21 @@ def calculate_co2_scrubber_rating(bnumbers: List[str]) -> int:
     co2_rating = int(co2_candidates[0], 2)
     return co2_rating
 
-if __name__ == "__main__":
+def _init_binary_nums() -> List[str]:
     with open("inputs/day3.txt", encoding="utf-8") as f:
         binary_nums = [binary_num.strip() for binary_num in f]
-        print(f"Solution for Part 1: {calculate_power_consumption(binary_nums)}")
+        return binary_nums
 
-    with open("inputs/day3.txt", encoding="utf-8") as f:
-        binary_nums = [binary_num.strip() for binary_num in f]
-        print(f"Solution for Part 2: {calculate_life_support_rating(binary_nums)}")
+def day_03_part_1():
+    """
+    Day 3 Part 1
+    """
+    binary_nums = _init_binary_nums()
+    print(f"Day 3 Part 1 Solution: {calculate_power_consumption(binary_nums)}")
+
+def day_03_part_2():
+    """
+    Day 3 Part 2
+    """
+    binary_nums = _init_binary_nums()
+    print(f"Day 3 Part 2 Solution: {calculate_life_support_rating(binary_nums)}")

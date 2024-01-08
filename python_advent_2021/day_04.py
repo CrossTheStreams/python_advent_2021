@@ -5,7 +5,6 @@ Day 4 of Advent of Code 2021
 from typing import Dict, List, Optional, Tuple, Set
 from collections import defaultdict
 import re
-import argparse
 
 class BingoBoard:
     """
@@ -116,15 +115,18 @@ def setup_bingo() -> Tuple[List[int], List[BingoBoard]]:
                 current_bboard.add_row(row)
         return (bingo_nums, bboards)
 
-if __name__ == "__main__":
+def day_04_part_1():
+    """
+    Day 4, Part 1
+    """
     nums, bingo_boards = setup_bingo()
-    parser = argparse.ArgumentParser("day_04.py")
-    parser.add_argument("--part", required=True, type=int, choices=[1, 2])
-    args = parser.parse_args()
+    winning_score = play_bingo_part_1(nums, bingo_boards)
+    print(f"Day 4, Part 1: Winning score for bingo game: {winning_score}")
 
-    if args.part == 1:
-        winning_score = play_bingo_part_1(nums, bingo_boards)
-        print(f"Day 4, Part 1: Winning score for bingo game: {winning_score}")
-    if args.part == 2:
-        winning_score = play_bingo_part_2(nums, bingo_boards)
-        print(f"Day 4, Part 2: Winning score for bingo game: {winning_score}")
+def day_04_part_2():
+    """
+    Day 4, Part 2
+    """
+    nums, bingo_boards = setup_bingo()
+    winning_score = play_bingo_part_2(nums, bingo_boards)
+    print(f"Day 4, Part 2: Winning score for bingo game: {winning_score}")
