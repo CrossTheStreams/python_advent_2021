@@ -19,6 +19,10 @@ from python_advent_2021.day_04 import (
     day_04_part_1,
     day_04_part_2
 )
+from python_advent_2021.day_05 import (
+    day_05_part_1,
+    day_05_part_2
+)
 
 if __name__ == "__main__":    
     parser = argparse.ArgumentParser("day_04.py")
@@ -50,5 +54,11 @@ if __name__ == "__main__":
                     day_04_part_1()
                 case 2:
                     day_04_part_2()
+        case 5:
+            match args.part:
+                case 1:
+                    day_05_part_1()
+                case 2:
+                    day_05_part_2()
         case default:
             print("Haven't done that one yet! 🐍☃️⛷️")
