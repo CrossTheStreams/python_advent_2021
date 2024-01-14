@@ -6,6 +6,7 @@ from typing import Dict, List, Optional, Tuple, Set
 from collections import defaultdict
 import re
 
+# pylint: disable=too-many-instance-attributes
 class BingoBoard:
     """
     A bingo game to play on a submarine, as one does.
@@ -57,17 +58,17 @@ class BingoBoard:
         if self.has_bingo:
             if self.score:
                 return self.score
-            else:
-                unmarked_sum = 0
-                unmarked_nums = []
-                for row_idx in range(len(self.board[0])):
-                    for col_idx in range(len(self.board)):
-                        if (row_idx, col_idx) not in self.marked_coors:
-                            unmarked_nums.append(self.board[row_idx][col_idx])
-                            unmarked_sum += self.board[row_idx][col_idx]
-                self.score = unmarked_sum * self.last_number_called
+            unmarked_sum = 0
+            unmarked_nums = []
+            for row_idx in range(len(self.board[0])):
+                for col_idx in range(len(self.board)):
+                    if (row_idx, col_idx) not in self.marked_coors:
+                        unmarked_nums.append(self.board[row_idx][col_idx])
+                        unmarked_sum += self.board[row_idx][col_idx]
+            self.score = unmarked_sum * self.last_number_called
             return self.score
         return 0
+# pylint: enable=too-many-instance-attributes
 
 def play_bingo_part_1(nums_to_call: int, bboards: List[BingoBoard]) -> int:
     """
@@ -79,6 +80,7 @@ def play_bingo_part_1(nums_to_call: int, bboards: List[BingoBoard]) -> int:
             bboard.call_number(num)
             if bboard.winning_score > 0:
                 return bboard.winning_score
+    return 0
 
 def play_bingo_part_2(nums_to_call: int, bboards: List[BingoBoard]) -> int:
     """
@@ -99,7 +101,7 @@ def setup_bingo() -> Tuple[List[int], List[BingoBoard]]:
     Setup nums to call and bingo board for playing a game of bingo.
     """
     with open("inputs/day4.txt", encoding="utf-8") as f:
-        lines = [line for line in f]
+        lines = list(f)
         bingo_nums = list(map(int, re.findall(r'\d+', lines[0])))
         bboards: List[BingoBoard] = []
         current_bboard = BingoBoard()
@@ -110,9 +112,8 @@ def setup_bingo() -> Tuple[List[int], List[BingoBoard]]:
                     bboards.append(current_bboard)
                     current_bboard = BingoBoard()
                 continue
-            else:
-                row = list(map(int, re.findall(r'\d+', line)))
-                current_bboard.add_row(row)
+            row = list(map(int, re.findall(r'\d+', line)))
+            current_bboard.add_row(row)
         return (bingo_nums, bboards)
 
 def day_04_part_1():

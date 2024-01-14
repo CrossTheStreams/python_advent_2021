@@ -37,6 +37,7 @@ def calculate_oxygen_rating(bnumbers: List[str]) -> int:
     Calculate the Oxygen Rating, a variable in the Life Support Rating
     """
     o_candidates = list(bnumbers)
+    oxygen_digit = ''
     for idx in range(len(bnumbers[0])):
         column = [x[idx] for x in list(o_candidates)]
         number_counts = Counter(column)
@@ -54,6 +55,7 @@ def calculate_co2_scrubber_rating(bnumbers: List[str]) -> int:
     Calculate the CO2 Scrubber Rating, a variable in the Life Support Rating
     """
     co2_candidates = list(bnumbers)
+    co2_digit = ''
     for idx in range(len(bnumbers[0])):
         column = [x[idx] for x in list(co2_candidates)]
         number_counts = Counter(column)

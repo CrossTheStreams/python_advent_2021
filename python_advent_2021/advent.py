@@ -24,7 +24,7 @@ from python_advent_2021.day_05 import (
     day_05_part_2
 )
 
-if __name__ == "__main__":    
+if __name__ == "__main__":
     parser = argparse.ArgumentParser("day_04.py")
     parser.add_argument("--day", required=True, type=int, choices=list(range(1, 26)))
     parser.add_argument("--part", required=True, type=int, choices=[1, 2])

@@ -1,4 +1,6 @@
-
+"""
+Day 5 of Advent of Code 2021
+"""
 
 from typing import List, Tuple
 from collections import defaultdict
@@ -27,7 +29,7 @@ class VentMatrix:
         """
         self.matrix[x][y] += 1
         return self.point(x, y)
- 
+
     def count_visited(self, visited_times: int) -> int:
         """
         Count the number of vents we've visited at least `visited_times` times.
