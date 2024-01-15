@@ -1,5 +1,6 @@
 import pytest
 from python_advent_2021.day_05 import (
+    diagonal_line_points,
     horizontal_line_points,
     setup_vent_lines,
     vertical_line_points,
@@ -33,6 +34,9 @@ def test_setup_vent_lines():
     ]
 
 def test_horizontal_line_points():
+    """
+    Test horizontal_line_points function
+    """
     vent_lines = setup_vent_lines(INPUT_STRING)
     horizontal = horizontal_line_points(vent_lines)
     assert horizontal == [
@@ -41,6 +45,9 @@ def test_horizontal_line_points():
     ]
 
 def test_vertical_line_points():
+    """
+    Test vertical_line_points function
+    """
     vent_lines = setup_vent_lines(INPUT_STRING)
     vertical = vertical_line_points(vent_lines)
     assert vertical == [
@@ -50,7 +57,23 @@ def test_vertical_line_points():
         [(1, 4), (2, 4), (3, 4)],
     ]
 
+def test_diagonal_line_points():
+    """
+    Test diagonal_line_points function
+    """
+    vent_lines = setup_vent_lines(INPUT_STRING)
+    diagonal = diagonal_line_points(vent_lines)
+    assert diagonal == [
+        [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8)],
+        [(2, 0), (3, 1), (4, 2), (5, 3), (6, 4)],
+        [(8, 0), (7, 1), (6, 2), (5, 3), (4, 4), (3, 5), (2, 6), (1, 7), (0, 8)],
+        [(8, 2), (7, 3), (6, 4), (5, 5)]
+    ]
+
 def test_vent_matrix():
+    """
+    Test VentMatrix.
+    """
     vent_lines = setup_vent_lines(INPUT_STRING)
     horizontal = horizontal_line_points(vent_lines)
     vertical = vertical_line_points(vent_lines)

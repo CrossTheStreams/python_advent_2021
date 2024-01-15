@@ -85,6 +85,28 @@ def vertical_line_points(vent_lines: List[Line]) -> List[LinePoints]:
         lines.append(line)
     return lines
 
+def diagonal_line_points(vent_lines: List[Line]) -> List[LinePoints]:
+    """
+    Get the points for diagonal lines.
+    """
+    lines = []
+    def is_diagonal(points: Line) -> bool:
+        return abs(points[0][0] - points[1][0]) == abs(points[0][1] - points[1][1])
+    line_points = list(filter(is_diagonal, vent_lines))
+    for points  in line_points:
+        line = []
+        sorted_points = sorted(points, key=lambda p: p[1])
+        start_point, end_point = sorted_points
+        x_mod = 1 if start_point[0] < end_point[0] else -1
+        y_mod = 1 if start_point[1] < end_point[1] else -1
+        point = start_point
+        while point != end_point:
+            line.append(point)
+            point = (point[0] + x_mod, point[1] + y_mod)
+        line.append(end_point)
+        lines.append(line)
+    return sorted(lines, key=lambda l: l[0])
+
 def day_05_part_1():
     """
     Day 5, Part 1
@@ -110,4 +132,24 @@ def day_05_part_2():
     """
     Day 5, Part 2
     """
-    print("Day 5, Part 2: Up next! ☃️")
+    with open("inputs/day5.txt", encoding="utf-8") as f:
+        input_string = f.read()
+    vent_lines = setup_vent_lines(input_string)
+    horizontal = horizontal_line_points(vent_lines)
+    vertical = vertical_line_points(vent_lines)
+    diagonal = diagonal_line_points(vent_lines)
+    vent_matrix = VentMatrix()
+    for points in horizontal:
+        for point in points:
+            x, y = point
+            vent_matrix.visit_point(x, y)
+    for points in vertical:
+        for point in points:
+            x, y = point
+            vent_matrix.visit_point(x, y)
+    for points in diagonal:
+        for point in points:
+            x, y = point
+            vent_matrix.visit_point(x, y)
+    count = vent_matrix.count_visited(visited_times=2)
+    print(f"Day 5, Part 1: Count vents we've visited twice, including diagonal lines: {count}")
