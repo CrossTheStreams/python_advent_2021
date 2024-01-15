@@ -3,6 +3,7 @@ Entry point for running commands to solve AOC puzzles.
 """
 
 import argparse
+
 from python_advent_2021.day_01 import (
     day_01_part_1,
     day_01_part_2
@@ -23,9 +24,13 @@ from python_advent_2021.day_05 import (
     day_05_part_1,
     day_05_part_2
 )
+from python_advent_2021.day_06 import (
+    day_06_part_1,
+    day_06_part_2
+)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("day_04.py")
+    parser = argparse.ArgumentParser()
     parser.add_argument("--day", required=True, type=int, choices=list(range(1, 26)))
     parser.add_argument("--part", required=True, type=int, choices=[1, 2])
     args = parser.parse_args()
@@ -60,5 +65,11 @@ if __name__ == "__main__":
                     day_05_part_1()
                 case 2:
                     day_05_part_2()
+        case 6:
+            match args.part:
+                case 1:
+                    day_06_part_1()
+                case 2:
+                    day_06_part_2()
         case default:
             print("Haven't done that one yet! 🐍☃️⛷️")
